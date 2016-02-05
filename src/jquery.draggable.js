@@ -62,6 +62,7 @@
     *     the mouse must move before dragging should start.
     *    @param {Boolean} [options.limit] Constrains dragging to the width of
     *     the container
+    *    @param {Number} [options.scale] The scaling factor scale that is applied. When a CSS modify the scale factor, you must give it to gridster so that the mouse will move according to it. Default scale is 1.0. The 1.0 is the original size.
     *    @param {Object|Function} [options.ignore_dragging] Array of node names
     *      that sould not trigger dragging, by default is `['INPUT', 'TEXTAREA',
     *      'SELECT', 'BUTTON']`. If a function is used return true to ignore dragging.
@@ -156,9 +157,9 @@
         var diff_y = Math.round(mouse_actual_pos.top - this.mouse_init_pos.top);
 
         var left = Math.round(this.el_init_offset.left +
-            diff_x - this.baseX + $(window).scrollLeft() - this.win_offset_x);
+            diff_x - this.baseX + $(window).scrollLeft() - this.win_offset_x) / this.options.scale;
         var top = Math.round(this.el_init_offset.top +
-            diff_y - this.baseY + $(window).scrollTop() - this.win_offset_y);
+            diff_y - this.baseY + $(window).scrollTop() - this.win_offset_y) / this.options.scale;
 
         if (this.options.limit) {
             if (left > this.player_max_left) {

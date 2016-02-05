@@ -44,6 +44,7 @@
         draggable: {
             items: '.gs-w',
             distance: 4,
+            scale: 1.0,
             ignore_dragging: Draggable.defaults.ignore_dragging.slice(0)
         },
         resize: {
@@ -52,7 +53,8 @@
             handle_append_to: '',
             handle_class: 'gs-resize-handle',
             max_size: [Infinity, Infinity],
-            min_size: [1, 1]
+            min_size: [1, 1],
+            scale: 1.0
         }
     };
 
@@ -115,6 +117,7 @@
     *        selector to append resize handles to.
     *       @param {String} [options.resize.handle_class] CSS class name used
     *        by resize handles.
+    *       @param {Number} [options.scale] The scaling factor scale that is applied. When a CSS modify the scale factor, you must give it to gridster so that the mouse will move according to it. Default scale is 1.0. The 1.0 is the original size.
     *       @param {Array} [options.resize.max_size] Limit widget dimensions
     *        when resizing. Array values should be integers:
     *        `[max_cols_occupied, max_rows_occupied]`
@@ -1321,8 +1324,8 @@
     * @param {Object} ui A prepared ui object with useful drag-related data
     */
     fn.on_resize = function(event, ui) {
-        var rel_x = (ui.pointer.diff_left);
-        var rel_y = (ui.pointer.diff_top);
+        var rel_x = (ui.pointer.diff_left) / this.options.resize.scale;
+        var rel_y = (ui.pointer.diff_top) / this.options.resize.scale;
         var wbd_x = this.options.widget_base_dimensions[0];
         var wbd_y = this.options.widget_base_dimensions[1];
         var margin_x = this.options.widget_margins[0];
@@ -2959,6 +2962,9 @@
     * @return {Object} Returns the instance of the Gridster class.
     */
     fn.add_faux_rows = function(rows) {
+
+        rows = parseInt(rows);
+
         var actual_rows = this.rows;
         var max_rows = actual_rows + (rows || 1);
 
@@ -2985,6 +2991,9 @@
     * @return {Object} Returns the instance of the Gridster class.
     */
     fn.add_faux_cols = function(cols) {
+
+        cols = parseInt(cols);
+
         var actual_cols = this.cols;
         var max_cols = actual_cols + (cols || 1);
         max_cols = Math.min(max_cols, this.options.max_cols);

@@ -17,7 +17,35 @@ Gridster is maintained by Ducksboard occasionally but not actively.
 @dustmoo and @pushmatrix have also write permissions as Gridster maintainers
 they are. Thank you guys!
 
-## Forks
+## This Fork
+
+This fork to introduce a scale value, as in CSS 3 scale attribute. I use it to do CSS scaling and keep mouse move at the right scale. You must provide scale in both resize and draggable options.
+
+Example:
+```
+$('#tiles').gridster({
+    namespace: '#tiles',
+    widget_margins: [4, 4],
+    widget_base_dimensions: [100, 100],
+    avoid_overlapped_widgets: true,
+    min_cols: config.columns,
+    extra_cols: 2,
+    extra_rows: 2,
+    autogrow_cols: true,
+    resize: {
+        scale: 0.6,
+        enabled: true,
+        helper: 'clone',
+        handle_append_to: '.header.widget-title:visible'
+    },
+    draggable: {
+        scale: 0.6
+    }
+});
+
+gridster = $('#tiles').gridster().data('gridster');
+```
+## Other Forks
 
 Mr @dustmoo (maintainer of Gridster) has his own fork of gridster.js
 with some new interesting features like widget-swapping and static widgets.
