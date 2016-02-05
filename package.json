@@ -1,26 +1,21 @@
 {
-  "name": "gridster",
-  "title": "gridster.js",
+  "name": "gridster-dco",
+  "title": "gridster-dco.js",
   "description": "a drag-and-drop multi-column jQuery grid plugin",
-  "version": "0.5.6",
+  "version": "v0.5.6-d",
   "homepage": "http://gridster.net/",
   "author": {
-    "name": "ducksboard",
-    "email": "hackers@ducksboard.com"
+    "name": "yar0d",
+    "email": "daniel.coquette@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ducksboard/gridster.js.git"
+    "url": "git@github.com:yar0d/gridster-dco.js.git"
   },
   "bugs": {
-    "url": "https://github.com/ducksboard/gridster.js/issues"
+    "url": "https://github.com/yar0d/gridster-dco.js/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/ducksboard/gridster.js/blob/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "keywords": [],
   "dependencies": {
     "jquery": "git+https://github.com/jquery/jquery.git#2.0.3"
